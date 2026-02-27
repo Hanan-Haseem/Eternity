@@ -1,19 +1,23 @@
 import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
 import { Card } from '@/components/ui/card'
 import { BookMarked, TrendingUp } from 'lucide-react'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 export const metadata: Metadata = {
   title: 'Research | Eternity AI',
   description: 'Explore the research foundations, literature review, and academic context of the Eternity AI project.',
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function ResearchPage() {
   return (
     <main className="overflow-hidden bg-background">
-     
-      
+      <Navbar />
+
       {/* Hero Section */}
       <section className="relative border-b border-border/20 bg-gradient-to-b from-primary/5 to-background px-4 py-16 sm:py-24">
         <div className="mx-auto max-w-4xl">
@@ -133,26 +137,10 @@ export default function ResearchPage() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                {
-                  stat: '1000+',
-                  label: 'Students Surveyed',
-                  insight: 'Comprehensive dataset representing diverse student profiles',
-                },
-                {
-                  stat: '16',
-                  label: 'Lifestyle Factors',
-                  insight: 'Multi-dimensional assessment of student wellbeing',
-                },
-                {
-                  stat: '97%+',
-                  label: 'Model Accuracy',
-                  insight: 'High-performance prediction of mental health conditions',
-                },
-                {
-                  stat: '3',
-                  label: 'Languages',
-                  insight: 'Inclusive support for diverse student populations',
-                },
+                { stat: '1000+', label: 'Students Surveyed', insight: 'Comprehensive dataset representing diverse student profiles' },
+                { stat: '16', label: 'Lifestyle Factors', insight: 'Multi-dimensional assessment of student wellbeing' },
+                { stat: '97%+', label: 'Model Accuracy', insight: 'High-performance prediction of mental health conditions' },
+                { stat: '3', label: 'Languages', insight: 'Inclusive support for diverse student populations' },
               ].map((item, index) => (
                 <Card key={index} className="border-border/50 bg-gradient-to-br from-primary/5 to-accent/5 p-6 backdrop-blur-sm">
                   <p className="text-3xl font-bold text-primary mb-1">{item.stat}</p>
@@ -166,46 +154,28 @@ export default function ResearchPage() {
           {/* Contribution */}
           <div className="space-y-6 border-t border-border/20 pt-12">
             <h2 className="text-3xl font-bold text-foreground">Contribution to Field</h2>
-            
+
             <Card className="border-primary/20 bg-gradient-to-r from-primary/5 to-accent/5 p-8">
               <ul className="space-y-4">
-                <li className="flex gap-4">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-muted-foreground">
-                    <strong className="text-foreground">First integrated approach:</strong> Combines DASS-21 with comprehensive lifestyle data for mental health assessment
-                  </span>
-                </li>
-                <li className="flex gap-4">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-muted-foreground">
-                    <strong className="text-foreground">AI accessibility:</strong> Demonstrates practical deployment of AI in university mental health contexts
-                  </span>
-                </li>
-                <li className="flex gap-4">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-muted-foreground">
-                    <strong className="text-foreground">Cultural adaptation:</strong> Shows effectiveness of culturally-informed AI interventions
-                  </span>
-                </li>
-                <li className="flex gap-4">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-muted-foreground">
-                    <strong className="text-foreground">Scalability model:</strong> Provides replicable framework for other universities and contexts
-                  </span>
-                </li>
-                <li className="flex gap-4">
-                  <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-muted-foreground">
-                    <strong className="text-foreground">Evidence-based:</strong> Contributes validation data for AI-driven mental health interventions
-                  </span>
-                </li>
+                {[
+                  { title: 'First integrated approach:', text: 'Combines DASS-21 with comprehensive lifestyle data for mental health assessment' },
+                  { title: 'AI accessibility:', text: 'Demonstrates practical deployment of AI in university mental health contexts' },
+                  { title: 'Cultural adaptation:', text: 'Shows effectiveness of culturally-informed AI interventions' },
+                  { title: 'Scalability model:', text: 'Provides replicable framework for other universities and contexts' },
+                  { title: 'Evidence-based:', text: 'Contributes validation data for AI-driven mental health interventions' },
+                ].map((item, index) => (
+                  <li key={index} className="flex gap-4">
+                    <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                    <span className="text-muted-foreground">
+                      <strong className="text-foreground">{item.title}</strong> {item.text}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </Card>
           </div>
         </div>
       </section>
-
-  
     </main>
   )
 }

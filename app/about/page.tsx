@@ -1,20 +1,23 @@
 import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
-import { motion } from 'framer-motion'
 import { Card } from '@/components/ui/card'
 import { BookOpen, Users, Lightbulb } from 'lucide-react'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 export const metadata: Metadata = {
   title: 'About Eternity AI | Research Project',
   description: 'Learn about the Eternity AI project, its scope, motivation, and significance for mental health intervention at USJ.',
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function AboutPage() {
   return (
     <main className="overflow-hidden bg-background">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="relative border-b border-border/20 bg-gradient-to-b from-primary/5 to-background px-4 py-16 sm:py-24">
         <div className="mx-auto max-w-4xl">
@@ -30,7 +33,7 @@ export default function AboutPage() {
       {/* Main Content */}
       <section className="px-4 py-16 sm:py-24">
         <div className="mx-auto max-w-4xl space-y-16">
-          {/* Scope */}
+          {/* Project Scope */}
           <div className="space-y-4">
             <div className="flex items-center gap-3 mb-6">
               <div className="rounded-lg bg-primary/10 p-3">
@@ -40,7 +43,7 @@ export default function AboutPage() {
             </div>
             <Card className="border-border/50 bg-white/50 p-8 backdrop-blur-sm">
               <p className="leading-relaxed text-muted-foreground">
-                The Eternity project develops a comprehensive AI-driven mental health intervention system specifically designed for University of Sri Jayewardenepura (USJ) students. The system combines standardized psychological assessment tools (DASS-21) with comprehensive lifestyle behavioral data to provide accurate mental health predictions and personalized interventions. Our scope includes data collection from 1000+ students, development of multiple machine learning models, fine-tuning of a large language model for culturally sensitive recommendations, and deployment of a mobile application.
+                The Eternity project develops a comprehensive AI-driven mental health intervention system specifically designed for University of Sri Jayewardenepura (USJ) students. The system combines standardized psychological assessment tools (DASS-21) with lifestyle behavioral data to provide accurate mental health predictions and personalized interventions. Scope includes data collection, ML model development, LLM fine-tuning, and mobile app deployment.
               </p>
             </Card>
           </div>
@@ -58,7 +61,7 @@ export default function AboutPage() {
                 <li className="flex gap-4">
                   <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-primary flex-shrink-0" />
                   <span className="text-muted-foreground">
-                    <strong className="text-foreground">High prevalence of mental health issues:</strong> Studies show depression (35.1–63.8%), anxiety (40.5–60%), and stress (27.7–87.9%) among USJ students.
+                    <strong className="text-foreground">High prevalence of mental health issues:</strong> Depression (35.1–63.8%), anxiety (40.5–60%), stress (27.7–87.9%) among USJ students.
                   </span>
                 </li>
                 <li className="flex gap-4">
@@ -76,7 +79,7 @@ export default function AboutPage() {
                 <li className="flex gap-4">
                   <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-primary flex-shrink-0" />
                   <span className="text-muted-foreground">
-                    <strong className="text-foreground">Technology potential:</strong> AI and machine learning can bridge the gap between demand and available resources.
+                    <strong className="text-foreground">Technology potential:</strong> AI and ML can bridge the gap between demand and resources.
                   </span>
                 </li>
               </ul>
@@ -93,30 +96,12 @@ export default function AboutPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
-                {
-                  title: 'Early Detection',
-                  description: 'Enable early identification of mental health conditions before they escalate',
-                },
-                {
-                  title: 'Scalability',
-                  description: 'Provide accessible support to a large number of students with limited resources',
-                },
-                {
-                  title: 'Personalization',
-                  description: 'Deliver tailored interventions based on individual psychological and lifestyle profiles',
-                },
-                {
-                  title: 'Cultural Relevance',
-                  description: 'Generate recommendations sensitive to local culture and context',
-                },
-                {
-                  title: 'Stigma Reduction',
-                  description: 'Provide confidential, digital support that reduces social stigma',
-                },
-                {
-                  title: 'Policy Impact',
-                  description: 'Inform university mental health policies and resource allocation decisions',
-                },
+                { title: 'Early Detection', description: 'Enable early identification of mental health conditions' },
+                { title: 'Scalability', description: 'Support many students with limited resources' },
+                { title: 'Personalization', description: 'Tailored interventions per student profile' },
+                { title: 'Cultural Relevance', description: 'Sensitive to local culture and context' },
+                { title: 'Stigma Reduction', description: 'Confidential digital support' },
+                { title: 'Policy Impact', description: 'Inform university mental health policies' },
               ].map((item, index) => (
                 <Card key={index} className="border-border/50 bg-white/50 p-6 backdrop-blur-sm hover:bg-white/70 transition-all">
                   <h3 className="font-bold text-foreground mb-2">{item.title}</h3>
@@ -153,8 +138,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      
     </main>
   )
 }
